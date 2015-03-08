@@ -7,7 +7,10 @@ Created on Sun Mar  8 19:25:01 2015
 
 from math import floor
 
-def GDC(a,b):
+def main():
+    print GCD(458784567,478962)
+
+def GCD(a,b):
     """
     Compute the Greatest Common Divisor d of a and b, and integers x and
     y satisfying ax + by = d.
@@ -35,7 +38,6 @@ def GDC(a,b):
         y2 = y1
         y1 = y
     return map(int, (a, x2, y2))
-                        
-        
-print GDC(16542,456)
-    
+
+if __name__ == '__main__':
+    main()

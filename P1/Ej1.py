@@ -34,8 +34,8 @@ def GDC(a,b):
         x1 = x
         y2 = y1
         y1 = y
-    return (a, x2, y2)
+    return map(int, (a, x2, y2))
                         
         
-print GDC(0, 3)
+print GDC(16542,456)
     

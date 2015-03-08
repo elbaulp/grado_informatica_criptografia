@@ -2,23 +2,25 @@
 """
 Created on Sun Mar  8 19:25:01 2015
 
-@author: Alejandro Alcalde
+@author: Alejandro Alcalde (elbauldelprogramador.com)
 """
 
-from math import floor
-
 def main():
-    print GCD(458784567,478962)
+    print extGcd(1542, 391)
 
-def GCD(a,b):
+def extGcd(a,b):
     """
     Compute the Greatest Common Divisor d of a and b, and integers x and
     y satisfying ax + by = d.
     
     It returns a tuple (d,x,y)
     """
-    if a <= 0 or b <= 0 or a < b:
-        return u'a and b must be positive and a >= b'    
+    
+    exange = False
+    if a < b:
+        a,b = b,a
+        exange = True
+
     if b == 0:
         return a,1,0
     x2 = 1
@@ -27,7 +29,7 @@ def GCD(a,b):
     y1 = 1
     
     while b > 0:
-        q = floor(a/b)
+        q = a/b
         r = a - q * b
         x = x2 - q * x1
         y = y2 - q * y1
@@ -37,7 +39,11 @@ def GCD(a,b):
         x1 = x
         y2 = y1
         y1 = y
-    return map(int, (a, x2, y2))
+
+    if exange:
+        return map(int, (a, y2, x2))
+    else:
+        return map(int, (a, x2, y2))
 
 if __name__ == '__main__':
     main()

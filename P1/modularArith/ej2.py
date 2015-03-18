@@ -10,18 +10,23 @@ primes.
 
 from ej1 import extGcd
 
+def main():
+    a = 391
+    n = 1542
+    
+    print "Inverse of " + str(a) + " modulo " + str(n) + " is " + str(moduloInverse(a, n))    
+
 def moduloInverse(a,n):
     """
         Returns the inverse of a modulo b, if it exists
     """      
     d,x,y = extGcd(a,n)
-    print d,x,y
+
     if d > 1:
         return u' a inverse does not exist'
     else:
         return x
-        
-a = 391
-n = 1542
 
-print "Inverse of " + str(a) + " modulo " + str(n) + " is " + str(moduloInverse(a, n))
+
+if __name__ == '__main__':
+    main()

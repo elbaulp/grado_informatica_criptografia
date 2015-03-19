@@ -33,6 +33,5 @@ def babyGiantStep(alpha, beta, p):
         if L.get(y) != None:
             return i*m + L[y]
 
-print babyGiantStep(43242341324,4324213,4324324421)
 print babyGiantStep(2,7,11)
 print powerModInt(3,100,113)

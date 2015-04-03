@@ -29,7 +29,7 @@ def extGcd(a,b):
     y1 = 1
     
     while b > 0:
-        q = a/b
+        q = a//b
         r = a - q * b
         x = x2 - q * x1
         y = y2 - q * y1

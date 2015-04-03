@@ -5,10 +5,14 @@ Created on Thu Mar 19 16:51:44 2015
 @author: Alejandro Alcalde (elbauldelprogramador.com)
 """
 
-from ej3 import powerModInt
-from fractions import gcd
+from math import ceil
 
-def Pollard(n, iter1=200, iter2=100):
+import gmpy
+
+from ej3 import powerModInt
+from ej1 import extGcd
+
+def Pollard(n, iter1=50, iter2=10):
     """
         Implementation of the Pollard algorithn for factoring integers mod n
     """
@@ -24,17 +28,43 @@ def Pollard(n, iter1=200, iter2=100):
     
     for _ in xrange(iter1):
         for _ in xrange(iter2):
-            x = f(x)
-            y = f(f(x))
+            x = f(x) % n
+            y = f(f(x)) % n
             z = (z * (x - y)) % n
+            print x, y
             
-        d = gcd(z, n)
+        d = extGcd(z, n)[0]
         if d > 1:
-            return d, n/d
+            return d, n//d
 #        if d == 1:
 #            x = f(x)
 #            y = f(f(x))
-    return d, n/d
+    return d, n//d
+# 187, 4717, 278009, 63053699, 549314599, 7247123747459, 2097335995683611, 4274010960572200553847767
+print Pollard(278009)
 
-print Pollard(455459)
-print Pollard(10403)
+def isqrt(n):
+    x = n
+    y = (x + 1) // 2
+    while y < x:
+        x = y
+        y = (x + n // x) // 2
+    return x
+
+def Fermat(n):
+    """
+        Implementa el Método de Fermat para factorización de enteros
+    """
+    if 1 & n == 0:
+        return "The number is even"
+    x = int(ceil(isqrt(n)))
+    perfect = (x * x) - n
+    isPerfect = False
+    while not isPerfect:
+        x += 1
+        perfect = (x * x) - n
+        if gmpy.is_square(perfect):
+            isPerfect = True
+    return x - isqrt(perfect)
+    
+print Fermat(6352351)

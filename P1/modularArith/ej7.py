@@ -6,6 +6,7 @@ Created on Thu Mar 19 16:51:44 2015
 """
 
 from math import ceil
+from timeit import time
 
 import gmpy
 
@@ -31,7 +32,6 @@ def Pollard(n, iter1=50, iter2=10):
             x = f(x) % n
             y = f(f(x)) % n
             z = (z * (x - y)) % n
-            print x, y
             
         d = extGcd(z, n)[0]
         if d > 1:
@@ -41,7 +41,11 @@ def Pollard(n, iter1=50, iter2=10):
 #            y = f(f(x))
     return d, n//d
 # 187, 4717, 278009, 63053699, 549314599, 7247123747459, 2097335995683611, 4274010960572200553847767
-print Pollard(278009)
+start_time = time.time()
+print Pollard(1234567)
+elapsed_time = time.time() - start_time
+print("%0.10f" % elapsed_time) 
+
 
 def isqrt(n):
     x = n
@@ -67,4 +71,7 @@ def Fermat(n):
             isPerfect = True
     return x - isqrt(perfect)
     
-print Fermat(6352351)
+start_time = time.time()
+print Fermat(23)
+elapsed_time = time.time() - start_time
+print("%0.10f" % elapsed_time) 

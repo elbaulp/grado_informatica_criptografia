@@ -8,11 +8,17 @@ primes.
 @author: Alejandro Alcalde (elbauldelprogramador.com)
 """
 
+from timeit import time
+
 from ej1 import extGcd
 
 def main():
-    a = 391
-    n = 1542
+    a,n = 65398261921 , 89
+    
+    start_time = time.time()
+    moduloInverse(a, n)
+    elapsed_time = time.time() - start_time
+    print("%0.10f" % elapsed_time)    
     
     print "Inverse of " + str(a) + " modulo " + str(n) + " is " + str(moduloInverse(a, n))    
 

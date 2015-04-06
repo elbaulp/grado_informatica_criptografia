@@ -7,6 +7,7 @@ Created on Wed Mar 18 15:47:06 2015
 
 from math import ceil
 from math import sqrt
+from timeit import time
 
 from ej3 import powerModInt
 from ej2 import moduloInverse
@@ -33,5 +34,9 @@ def babyGiantStep(alpha, beta, p):
         if L.get(y) != None:
             return i*m + L[y]
 
-print babyGiantStep(2,7,11)
-print powerModInt(3,100,113)
+
+
+start_time = time.time()
+print babyGiantStep(50,564681638448641,23)
+elapsed_time = time.time() - start_time
+print("%0.10f" % elapsed_time) 

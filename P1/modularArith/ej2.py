@@ -13,7 +13,7 @@ from timeit import time
 from ej1 import extGcd
 
 def main():
-    a,n = 65398261921 , 89
+    a,n = 2 , 5
     
     start_time = time.time()
     moduloInverse(a, n)

@@ -9,7 +9,7 @@ from timeit import time
 
 def main():
     start_time = time.time()
-    extGcd(562390847 ,22)
+    print extGcd(5,-3)
     elapsed_time = time.time() - start_time
     print("%0.10f" % elapsed_time)
 
@@ -21,10 +21,10 @@ def extGcd(a,b):
     It returns a tuple (d,x,y)
     """
     
-    exange = False
-    if a < b:
-        a,b = b,a
-        exange = True
+#    exange = False
+#    if a < b:
+#        a,b = b,a
+#        exange = True
 
     if b == 0:
         return a,1,0
@@ -33,7 +33,7 @@ def extGcd(a,b):
     y2 = 0
     y1 = 1
     
-    while b > 0:
+    while b != 0:
         q = a//b
         r = a - q * b
         x = x2 - q * x1
@@ -45,10 +45,12 @@ def extGcd(a,b):
         y2 = y1
         y1 = y
 
-    if exange:
-        return map(int, (a, y2, x2))
-    else:
-        return map(int, (a, x2, y2))
+#    if exange:
+#        return map(int, (a, y2, x2))
+#    else:
+    if a < 0:
+        return map(int, (-a, -x2, -y2))
+    return map(int, (a, x2, y2))
 
 if __name__ == '__main__':
     main()

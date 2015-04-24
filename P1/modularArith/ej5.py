@@ -26,8 +26,7 @@ def babyGiantStep(alpha, beta, p):
     for j in xrange(m):
         power = powerModInt(alpha, j, p)
         L[power] = j
-    
-    alphaInv = powerModInt(moduloInverse(alpha, p), m,p)
+    alphaInv = powerModInt(moduloInverse(alpha, p), m, p)
         
     for i in xrange(m - 1):
         y = (beta * powerModInt(alphaInv, i, p)) % p
@@ -37,6 +36,6 @@ def babyGiantStep(alpha, beta, p):
 
 
 start_time = time.time()
-print babyGiantStep(50,564681638448641,23)
+print babyGiantStep(315654,51216931716,72345123259)
 elapsed_time = time.time() - start_time
 print("%0.10f" % elapsed_time) 

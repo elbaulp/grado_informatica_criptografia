@@ -9,17 +9,20 @@ def LFSR(coef,sem,longitud):
     
     assert(len(coef)==len(sem))
         
-    l = ""
+    l = []
     
     for k in xrange(0,longitud):
         sj = 0
         for i in xrange(0,len(coef)):
             a = sem[i] & coef[i]
             sj = sj ^ a
-        l += (str(sem[len(sem) - 1]))
+        l.append(sem[len(sem) - 1])
         sem = [sj] + sem
         sem = sem[:len(sem) - 1]
  
     return l
     
-print LFSR([1,0,1], [1,1,1], 24)
+#print LFSR([1,0,1], [1,1,1], 12)
+#print LFSR([1,0,0,1], [0,1,1,0], 30)
+# primitive polynomial
+print LFSR([1,0,0,1,0], [1,1,1,1,1], 2**5)

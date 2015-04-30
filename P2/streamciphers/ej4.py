@@ -15,7 +15,7 @@ def geffe(coef1, s1, coef2, s2, coef3, s3, l):
 
     r = []   
     
-    for i,j,k in zip(l1,l2,l3):
+    for i, j, k in zip(l1,l2,l3):
         x1 = i * j;
         x2 = j * k;
         x3 = k;
@@ -26,7 +26,7 @@ def geffe(coef1, s1, coef2, s2, coef3, s3, l):
 
 def encrypt(m, coef1, s1, coef2, s2, coef3, s3):
     """
-        Takes a message and ciphers it with a key using 
+        Takes a message and ciphers it with a key using geffe
     """
     k = geffe(coef1, s1, coef2, s2, coef3, s3, len(m))
 

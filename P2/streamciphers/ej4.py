@@ -23,8 +23,37 @@ def geffe(coef1, s1, coef2, s2, coef3, s3, l):
         r.append(f)
     
     return r
+
+def encrypt(m, coef1, s1, coef2, s2, coef3, s3):
+    """
+        Takes a message and ciphers it with a key using 
+    """
+    k = geffe(coef1, s1, coef2, s2, coef3, s3, len(m))
+
+    c = ""
     
-print geffe([1,1,0,0], [1,1,1,1],
-            [1,0,1,0], [1,0,1,1],
-            [1,1,0,1], [1,1,0,1], 
-            25)
+    for i,j in zip(m,k):
+        c += chr(ord(i) ^ j)
+        
+    return c, k
+
+def decrypt(c, k):
+    """
+        Decrypt a message cipher with geffe
+    """
+    m = ""
+    
+    for i,j in zip(c,k):
+        m += chr((ord(i) ^ j))
+        
+    return m
+    
+c,k = encrypt(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+            [1,1,0,0,1,0], [1,1,1,1,0,1],
+            [1,0,1,0,1,1], [1,0,1,1,1,1],
+            [1,1,0,1,0,0], [1,1,0,1,0,0])
+            
+print "Cipher %s \n\n ..... \n\n%s" % (c,k) 
+
+print "Decipher \n\n" + decrypt(c,k)

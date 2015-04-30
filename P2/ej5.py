@@ -27,29 +27,31 @@ def berlekampMassey(s):
         
         d = 0
                 
-        for i in range(0,L+1):
-            d += C[i]*s[N-i]
-        d = d%2
+        for i in xrange(L+1):
+            d = (d + C[i] * s[N-i]) % 2
         
         if d == 1:
-            T=C
+            T = C
             D = [0]*(N-m)+B
+
             if(len(D) > len(C)):
                 C = C+([0]*(len(D)-len(C)))
-            for i in range(0,len(D)): 
-                C[i] = (C[i]+D[i])%2
-            if(L<=N/2):
-                L=N+1-L
-                m=N
-                B=T
-                l=1
+                
+            for i in xrange(len(D)): 
+                C[i] = (C[i] + D[i]) % 2
+
+            if(L <= N/2):
+                L = N+1-L
+                m = N
+                B = T
+                l = 1
             else:
-                l+=1
+                l += 1
         else:
-             l+=1
+             l += 1
 
         N = N+1
     
     return L,C
     
-print berlekampMassey([1,0,0,1,0])
+print berlekampMassey([0, 0, 1, 1, 0, 1, 1, 1, 0])

@@ -5,6 +5,8 @@ Created on Thu Apr 30 11:47:34 2015
 @author: Alejandro Alcalde (elbauldelprogramador.com)
 """
 
+from ej2 import LFSR
+
 def berlekampMassey(s):
     """
     The Berlekamp-Massey algorithm (Algorithm 6.30) is an efficient 
@@ -54,4 +56,16 @@ def berlekampMassey(s):
     
     return L,C
     
-print berlekampMassey([0, 0, 1, 1, 0, 1, 1, 1, 0])
+#print berlekampMassey([0, 0, 1, 1, 0, 1, 1, 1, 0])
+
+
+
+# Sum of sequences
+c1, s1 = berlekampMassey(LFSR([1,0,0,1,0], [1,1,1,1,1], 2**5 - 1))
+c2, s2 = berlekampMassey([1, 1, 1, 1, 0, 1, 1, 1, 0])
+
+print c1, s1
+
+s1_plus_s2 = [x ^ y for x,y in zip(s1, s2)]
+
+print berlekampMassey(s1_plus_s2)

@@ -5,6 +5,8 @@ Created on Tue Apr 28 10:38:28 2015
 @author: Alejandro Alcalde (elbauldelprogramador.com)
 """
 
+from ej1 import checkGolomg
+
 def LFSR(coef,sem,longitud):
     
     assert(len(coef)==len(sem))
@@ -25,4 +27,10 @@ def LFSR(coef,sem,longitud):
 #print LFSR([1,0,1], [1,1,1], 12)
 #print LFSR([1,0,0,1], [0,1,1,0], 30)
 # primitive polynomial
-print LFSR([1,0,0,1,0], [1,1,1,1,1], 2**5)
+
+#s = ''.join(map(str, LFSR([1,0,0,1,0], [1,1,1,1,1], 2**5 - 1)))
+#
+#print checkGolomg(s)
+
+if __name__ == '__main__':
+    pass

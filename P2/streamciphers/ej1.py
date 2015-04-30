@@ -48,10 +48,5 @@ def checkGolomg(seq):
     
     return True if sum(postulates) == 3 else False 
 
-lis = "100110101111000"
-lis3 = "111011011000100"
-lis2 = "0011101"
-
-print checkGolomg(lis)
-print checkGolomg(lis2)
-print checkGolomg(lis3)
+if __name__ == '__main__':
+    pass

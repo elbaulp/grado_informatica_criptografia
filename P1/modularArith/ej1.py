@@ -20,11 +20,6 @@ def extGcd(a,b):
     
     It returns a tuple (d,x,y)
     """
-    
-#    exange = False
-#    if a < b:
-#        a,b = b,a
-#        exange = True
 
     if b == 0:
         return a,1,0
@@ -45,9 +40,6 @@ def extGcd(a,b):
         y2 = y1
         y1 = y
 
-#    if exange:
-#        return map(int, (a, y2, x2))
-#    else:
     if a < 0:
         return map(int, (-a, -x2, -y2))
     return map(int, (a, x2, y2))

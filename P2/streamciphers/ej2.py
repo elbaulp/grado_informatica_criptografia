@@ -18,7 +18,7 @@ def LFSR(coef,sem,longitud):
             sj = sj ^ a
         l.append(sem[len(sem) - 1])
         sem = [sj] + sem
-        sem = sem[:len(sem) - 1]
+        sem = sem[:-1]
  
     return l
     

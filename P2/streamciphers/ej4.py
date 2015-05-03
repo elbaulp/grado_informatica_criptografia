@@ -49,7 +49,7 @@ def decrypt(c, k):
     return m
     
 c,k = encrypt(
-            "MI BESO",
+            "Lorem itsum sit amet",
             [1,1,0,0,1,0], [1,1,1,1,0,1],
             [1,0,1,0,1,1], [1,0,1,1,1,1],
             [1,1,0,1,0,0], [1,1,0,1,0,0])

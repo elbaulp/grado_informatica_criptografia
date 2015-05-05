@@ -11,19 +11,26 @@ def NLFSR(f, s, k):
 
     l = []
     
-    for _ in range(0,k): 
+    for i in s:
+        l.append(i)    
+    
+    for _ in xrange(k): 
         sj = 0
         for i in f:
             r = 1
             for j,seed in zip(i,s):
-                r = (r + seed * j) % 2
+                if j == 1:
+                    r = r * seed * j
             sj = sj ^ r
             
         l.append(sj)
-        s = [sj] + s
+        s = s + [sj] 
         
+        for i in xrange(len(s) - 1):
+            s[i] = s[i+1]
+            
         s = s[:-1]
 
     return l
     
-print NLFSR([[0, 0, 0, 1], [0, 0, 1, 0], [1, 1, 1, 0], [0, 0, 0, 0]], [1, 0, 1, 1], 20)
+print NLFSR([[0, 0, 0, 1], [0, 0, 1, 0], [1, 1, 1, 0], [0, 0, 0, 0]], [1, 1, 1, 1], 20)

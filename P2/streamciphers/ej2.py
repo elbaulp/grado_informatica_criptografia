@@ -24,13 +24,12 @@ def LFSR(coef,sem,longitud):
  
     return l
     
-#print LFSR([1,0,1], [1,1,1], 12)
-#print LFSR([1,0,0,1], [0,1,1,0], 30)
-# primitive polynomial
-
-#s = ''.join(map(str, LFSR([1,0,0,1,0], [1,1,1,1,1], 2**5 - 1)))
-#
-#print checkGolomg(s)
 
 if __name__ == '__main__':
-    pass
+    
+    print LFSR([1,0,1], [1,1,1], 12)
+    print LFSR([1,0,0,1], [0,1,1,0], 30)
+    # primitive polynomial
+    
+    s = ''.join(map(str, LFSR([1,0,0,1,0], [1,1,1,1,1], 2**5 - 1)))
+    print checkGolomg(s)

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 """
 Created on Thu Apr 30 09:48:53 2015
 
@@ -13,7 +14,7 @@ def geffe(coef1, s1, coef2, s2, coef3, s3, l):
     l2 = LFSR(coef2, s2, l)
     l3 = LFSR(coef3, s3, l)
 
-    r = []   
+    r = []
     
     for i, j, k in zip(l1,l2,l3):
         x1 = i * j;

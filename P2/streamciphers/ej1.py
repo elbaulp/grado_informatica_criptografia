@@ -49,4 +49,4 @@ def checkGolomg(seq):
     return True if sum(postulates) == 3 else False 
 
 if __name__ == '__main__':
-    pass
+    print checkGolomg("000111101011001")

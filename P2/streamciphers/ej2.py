@@ -13,9 +13,9 @@ def LFSR(coef,sem,longitud):
         
     l = []
     
-    for k in xrange(0,longitud):
+    for k in xrange(longitud):
         sj = 0
-        for i in xrange(0,len(coef)):
+        for i in xrange(len(coef)):
             a = sem[i] & coef[i]
             sj = sj ^ a
         l.append(sem[len(sem) - 1])

@@ -12,8 +12,8 @@ def geffe(coef1, s1, coef2, s2, coef3, s3, l):
     
     l1 = LFSR(coef1, s1, l)
     l2 = LFSR(coef2, s2, l)
-    l3 = LFSR(coef3, s3, l)
-
+    l3 = LFSR(coef3, s3, l) 
+    
     r = []
     
     for i, j, k in zip(l1,l2,l3):
@@ -58,3 +58,11 @@ c,k = encrypt(
 print "Cipher %s \n\n ..... \n\n%s" % (c,k) 
 
 print "Decipher \n\n" + decrypt(c,k)
+
+
+## Primos relativos para p1p2p3
+s = geffe([1,0,1], [1,1,1], 
+      [1,0,0,1], [1,1,1,1],
+      [1,0,0,1,0], [1,1,1,1,1], 3500)
+      
+print ''.join(map(str, s))

@@ -61,17 +61,17 @@ def berlekampMassey(s):
 
 
 # Sum of sequences
-c1, s1 = berlekampMassey(LFSR([1, 0, 0, 1, 0], [1, 1, 1, 1, 1], 2**5 - 1))
-c2, s2 = berlekampMassey(LFSR([1, 0, 0, 1, 0, 0], [1, 1, 1, 1, 1, 1], 2**6 - 1))
+c1, s1 = berlekampMassey(LFSR([1, 0, 0, 1, 0], [1, 1, 1, 1, 1],  200))
+c2, s2 = berlekampMassey(LFSR([1, 0, 0, 1, 0, 0], [1, 1, 1, 1, 1, 1], 200))
 
 print c1, s1
 print c2, s2
 
 ## Sum of LFSRs, the complexity is the sum of their complexities
-s1_plus_s2 = [x | y for x,y in zip(LFSR([1, 0, 0, 1, 0], [1, 1, 1, 1, 1], 2**5 - 1), LFSR([1, 0, 0, 1, 0, 0], [1, 1, 1, 1, 1, 1], 2**6 - 1))]
+s1_plus_s2 = [x ^ y for x,y in zip(LFSR([1, 0, 0, 1, 0], [1, 1, 1, 1, 1], 2**5 - 1), LFSR([1, 0, 0, 1, 0, 0], [1, 1, 1, 1, 1, 1], 2**5 - 1))]
 
 ## Multiplication of LFSRs, the complexity is their multiplication
-s1_times_s2 = [x & y for x,y in zip(LFSR([1, 0, 0, 1, 0], [1, 1, 1, 1, 1], 2**5 - 1), LFSR([1, 0, 0, 1, 0, 0], [1, 1, 1, 1, 1, 1], 2**6 - 1))]
+s1_times_s2 = [x & y for x,y in zip(LFSR([1, 0, 0, 1, 0], [1, 1, 1, 1, 1], 500), LFSR([1, 0, 0, 1, 0, 0], [1, 1, 1, 1, 1, 1], 500))]
 
 print berlekampMassey(s1_plus_s2)
 print berlekampMassey(s1_times_s2)

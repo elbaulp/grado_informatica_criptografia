@@ -20,14 +20,14 @@ def NLFSR(f, s, k):
             r = 1
             for j,seed in zip(i,s):
                 if j == 1:
-                    r = r * seed * j
+                    r = r * seed
             sj = sj ^ r
             
         l.append(sj)
         s = s + [sj] 
         
-        for i in xrange(len(s) - 1):
-            s[i] = s[i+1]
+#        for i in xrange(len(s) - 1):
+#            s[i] = s[i+1]
             
         s = s[:-1]
 

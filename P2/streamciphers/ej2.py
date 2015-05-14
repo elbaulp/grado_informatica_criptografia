@@ -11,25 +11,24 @@ def LFSR(coef,sem,longitud):
     
     assert(len(coef)==len(sem))
         
-    l = []
-    
-    for k in xrange(longitud):
+    l = sem
+    for k in xrange(longitud - len(coef)):
         sj = 0
         for i in xrange(len(coef)):
             a = sem[i] & coef[i]
             sj = sj ^ a
-        l.append(sem[len(sem) - 1])
-        sem = [sj] + sem
-        sem = sem[:-1]
+        l.append(sj)
+        sem = l[len(l) - len(coef) : len(l)]
  
     return l
     
 
 if __name__ == '__main__':
     
-    print LFSR([1,0,1], [1,1,1], 12)
-    print LFSR([1,0,0,1], [0,1,1,0], 30)
+    #print LFSR([1,0,1], [1,1,1], 12)
+    #print LFSR([1,0,0,1], [0,1,1,0], 30)
     # primitive polynomial
     
     s = ''.join(map(str, LFSR([1,0,0,1,0], [1,1,1,1,1], 2**5 - 1)))
+    print s
     print checkGolomg(s)

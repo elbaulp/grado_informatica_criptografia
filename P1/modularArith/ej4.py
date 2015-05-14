@@ -24,7 +24,7 @@ def millerAux(a, p, u):
             if a == p - 1:
                 prime = True
             if a == 1:
-                prime = False
+                return False
                 
     return prime
 
@@ -65,4 +65,4 @@ print MillerRabin(58021664585639791181184025950440248398226136069516938232493687
 elapsed_time = time.time() - start_time
 print("%0.10f" % elapsed_time) 
 
-#print MillerRabin(47)
+print MillerRabin(47)

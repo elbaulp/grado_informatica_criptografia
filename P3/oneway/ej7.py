@@ -118,7 +118,7 @@ def verify_sign(original_file=None, signature=None, pub_key=None):
 
 def main():
     parser = argparse.ArgumentParser(description='Generate RSA keys, sign and verify signed files')
-    parser.add_argument('-g','--genkeys', help='Generate RSA keys', type=int)
+    parser.add_argument('-g','--genkeys', help='Generate RSA keys', type=int, metavar='<key size>')
     parser.add_argument('-s', '--sign', help='Sign a file', type=str, nargs=2, metavar=('<file>', '<priv key>'))
     parser.add_argument('-v', '--verify', help='Verify a signed file', type=str, nargs=3, metavar=('<original file>', '<signed file>', '<pub key>'))
     

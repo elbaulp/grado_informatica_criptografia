@@ -13,7 +13,7 @@ from timeit import time
 from ej1 import extGcd
 
 def main():
-    a,n = 2 , 5
+    a,n = 2, 5
     
     start_time = time.time()
     moduloInverse(a, n)
@@ -31,7 +31,7 @@ def moduloInverse(a,n):
     if d > 1:
         return u' a inverse does not exist'
     else:
-        return x
+        return x % n
 
 
 if __name__ == '__main__':

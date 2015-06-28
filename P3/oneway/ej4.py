@@ -4,20 +4,22 @@ Created on Mon Jun 22 19:02:41 2015
 
 @author: Alejandro Alcalde (elbauldelprogramador.com)
 """
+import random
+import binascii
+
+n = 48478872564493742276963
+a0 = random.getrandbits(10)**2 % n
+a1 = random.getrandbits(10)**2 % n
+text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
 def h(b,x):
-    n = 48478872564493742276963
-    a0 = 621137347346**2 % n
-    a1 = 137252404096**2 % n
-    
     return (x**2  * a0**b * a1**(1-b)) % n
 
 def MerkleDamgard(li,x):
     cost = 0
     for i in xrange(len(li)):
-        cost = h(li[i],x)    
+        cost = h(li[i], x)
         x = cost
     return cost
-    
-print MerkleDamgard([1,1,1,1], 789651975)
-    
+
+print MerkleDamgard([1,1,1,1], int(binascii.hexlify(text), 16))

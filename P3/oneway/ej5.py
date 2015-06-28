@@ -28,16 +28,18 @@ def ComputeE():
         else:
             e += 1
     return e
-    
+
 def ComputeD():
     e = ComputeE()
     d = moduloInverse(e,phi_n)#inverso de e mod p-1*q-1
     return d,e
-    
+
 def RSA(i):
     d,e = ComputeD()
-    print d,e
-    return powerModInt(i,e,n)
-    
-r = RSA(1234567890)
-print powerModInt(r, -1, n)
+    f_x = powerModInt(i,e,phi_n)
+    f_minus_1 = moduloInverse(i, phi_n)
+    return f_x, f_minus_1
+
+
+print RSA(1234567890)
+# print powerModInt(r, -1, n)

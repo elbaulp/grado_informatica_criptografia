@@ -15,7 +15,7 @@ from modularArith.ej2 import moduloInverse
 # priv key
 q,w,r = 881, 706, 588
 
-def super_creciente(m, li):
+def cypher(m, li):
     # Pub key
     pub = []
     for i in xrange(len(li)):
@@ -28,7 +28,7 @@ def super_creciente(m, li):
     print "Pub: " + str(pub)
     return c
 
-def super_creciente_inv(c, w):
+def decypher(c, w):
     s = moduloInverse(r,q) * c % q
 
     m = []
@@ -44,8 +44,8 @@ def super_creciente_inv(c, w):
     return chr(int(''.join(map(str, m)),2))
 
 s = [2, 7, 11, 21, 42, 89, 180, 354]
-c = super_creciente(bin(ord('b'))[2:].zfill(8), s)
-m = super_creciente_inv(c, s)
+c = cypher(bin(ord('b'))[2:].zfill(8), s)
+m = decypher(c, s)
 
 print 'E(m): ' + str(c)
 print 'D(c): ' + str(m)

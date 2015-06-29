@@ -10,48 +10,45 @@ sys.path.append('../../P1')
 
 from modularArith.ej2 import moduloInverse
 
-def super_creciente(li):
-    #clave privada
-    u,n,k = 41651,2097152,20
-    sucesion = []
-    for i in range(0,k):
-        sucesion.append(2**i)
-    #clave pública
-    publica = []
-    for i in range(0,k):
-        publica.append((sucesion[i]*u)% n)
-    #calculamos el valor
-    coste = 0
-    for i,j in zip(publica,li):
-        coste = (coste + i*j) % n 
-    return coste 
+# https://en.wikipedia.org/wiki/Merkle%E2%80%93Hellman_knapsack_cryptosystem
 
-def super_creciente_inv(coste):
-    #clave privada
-    u,n,k = 41651,2097152,20
-    sucesion = []
-    for i in range(0,k):
-        sucesion.append((2**i) % n)
-    #inverso de 3, llave privada
-    inverso = moduloInverse(u,2097152)
-    s = (coste * inverso) %  n
-    #lista de salida
-    salida = []
-    i = k
-    while s !=0:
-        if s >= sucesion[i-1]:
-            s -= sucesion[i-1]
-            salida.append(1)
+# priv key
+q,w,r = 881, 706, 588
+
+def super_creciente(m, li):
+    # Pub key
+    pub = []
+    for i in xrange(len(li)):
+        pub.append( (li[i] * r) % q)
+
+    c = 0
+    for i in xrange(len(pub)):
+        c += int(m[i]) * pub[i]
+
+    print "Pub: " + str(pub)
+    return c
+
+def super_creciente_inv(c, w):
+    s = moduloInverse(r,q) * c % q
+
+    m = []
+    i = len(w) - 1
+    while s != 0:
+        if s >= w[i]:
+            s -= w[i]
+            m.append(1)
         else:
-            salida.append(0)
+            m.append(0)
         i -= 1
-    if len(salida) != k:
-        for i in range(len(salida),k):
-            salida.append(0)
-    salida.reverse()
-    return salida
-    
-print super_creciente([1,1,0,0,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1])
+    m.reverse()
+    return chr(int(''.join(map(str, m)),2))
+
+s = [2, 7, 11, 21, 42, 89, 180, 354]
+c = super_creciente(bin(ord('b'))[2:].zfill(8), s)
+m = super_creciente_inv(c, s)
+
+print 'E(m): ' + str(c)
+print 'D(c): ' + str(m)
 
 if __name__ == '__main__':
     pass

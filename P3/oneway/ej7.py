@@ -14,11 +14,9 @@ import argparse
 
 from hashlib import sha512
 
+import Utils
 from modularArith.ej2 import moduloInverse
 from modularArith.ej3 import powerModInt
-from modularArith.ej4 import MillerRabin
-from rsaUtils import compute_e
-from rsaUtils import ascii_print
 
 PATH = "/tmp/"
 PUB_KEY = PATH + "rsa.pub"
@@ -47,19 +45,19 @@ def main():
         PRIV_KEY = PATH + "rsa.priv"
 
         if args.genkeys:
-            print "Generating keys..."
+            print "Generating " + str(args.genkeys) + " bit keys..."
             gen_keys(args.genkeys)
             print "Done, keys placed in " + PATH
             print "Your public key:"
-            ascii_print(PUB_KEY)
+            Utils.ascii_print(PUB_KEY)
             print "Your private key:"
-            ascii_print(PRIV_KEY)
+            Utils.ascii_print(PRIV_KEY)
         elif args.sign:
             print "Signing file..."
             SIGNED_FILE = PATH + args.sign[0] + ".signed"
             sign(args.sign[0], args.sign[1])
             print "Sign placed in " + SIGNED_FILE + " here is the sign"
-            ascii_print(SIGNED_FILE)
+            Utils.ascii_print(SIGNED_FILE)
         elif args.verify:
             print "Verifying signature..."
             check, original = verify_sign(args.verify[0], args.verify[1], args.verify[2])
@@ -75,20 +73,6 @@ def main():
             print "Original signature: \n" + str(original)
             print "Current signature \n" + str(check)
 
-def get_prime(p):
-    """Returns the next prime starting in the number p
-
-    :param p: The number from when to start looking for pimes
-    :returns: The next prime starting from p
-    """
-    prime = False
-    while not prime:
-        if MillerRabin(p):
-            prime = True
-        else:
-            p += 2
-    return p
-
 def gen_keys(size=1024):
     """Generate a RSA key pair of the given size bytes.
     :param size: Size in bits of the keys (Default is 1024 bits)
@@ -102,12 +86,12 @@ def gen_keys(size=1024):
     if not 0x1 & n2:
         n2 = n2 + 1
 
-    p = get_prime(n1)
-    q = get_prime(n2)
+    p = Utils.get_prime(n1)
+    q = Utils.get_prime(n2)
 
     n = p * q
     phi_n = (p-1)*(q-1)
-    e = compute_e(phi_n)
+    e = Utils.compute_e(phi_n)
     # Compute the private key, d = e^-1 mod (phi_n)
     d = moduloInverse(e, phi_n)
 

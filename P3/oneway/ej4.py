@@ -15,11 +15,16 @@ text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 def h(b,x):
     return (x**2  * a0**b * a1**(1-b)) % n
 
-def MerkleDamgard(li,x):
-    cost = 0
-    for i in xrange(len(li)):
-        cost = h(li[i], x)
-        x = cost
-    return cost
+def MerkleDamgard(sem,m):
+    """Implementation of the MerkleDamgard hash function.
+    :param sem: Seed of the function
+    :param m: Message to hash
+    :returns: H(m)
+    """
+    x = sem
 
-print MerkleDamgard([1,1,1,1], int(binascii.hexlify(text), 16))
+    for i in xrange(len(m)):
+        x = h(int(m[i]), x)
+    return x
+
+print "h(m) = " + str(MerkleDamgard(15, bin(int(binascii.hexlify(text), 16))[2:]))

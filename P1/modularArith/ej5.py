@@ -33,9 +33,8 @@ def babyGiantStep(alpha, beta, p):
         if L.get(y) != None:
             return i*m + L[y]
 
-
-
-start_time = time.time()
-print babyGiantStep(315654,51216931716,72345123259)
-elapsed_time = time.time() - start_time
-print("%0.10f" % elapsed_time) 
+if __name__ == '__main__':
+    start_time = time.time()
+    print babyGiantStep(315654,51216931716,72345123259)
+    elapsed_time = time.time() - start_time
+    print("%0.10f" % elapsed_time) 

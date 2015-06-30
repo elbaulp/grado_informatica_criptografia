@@ -6,30 +6,25 @@ Created on Mon Jun 22 19:02:41 2015
 """
 
 import sys
+import random
+
 sys.path.append('../../P1')
 
-from modularArith.ej2 import moduloInverse
-
-def get_prime(p):
-    """Returns the next prime starting in the number p
-
-    :param p: The number from when to start looking for pimes
-    :returns: The next prime starting from p
-    """
-    prime = False
-    while not prime:
-        if MillerRabin(p):
-            prime = True
-        else:
-            p += 2
-    return p
+from modularArith.ej4 import MillerRabin
+from modularArith.ej3 import powerModInt
+from modularArith.ej5 import babyGiantStep
+from Utils import get_prime
 
 def primitive(n):
-    if not 0x1 & n:
-        n += 1
-    q = int((n-1)/2)
-    p = get_prime(q)
-    p2 = get_prime(2 * p + 1)
-    n = p2
+    a = random.randint(2, n-2)
+    while powerModInt(a, (n-1)/2, n) == 1:
+        a = random.randint(2, n-2)
+    return a
 
-    ## Falta Jacobi
+p = get_prime(76625397)
+alpha = primitive(p)
+
+print "p = %d" % p
+print "alpha = %d" % alpha
+birth = 19910210
+print "log_%d(%d) = %d" % (alpha,birth, babyGiantStep(alpha, birth, p))

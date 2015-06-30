@@ -13,6 +13,6 @@ from modularArith.ej1 import extGcd
 def calculePQFromRabin():
     p = extGcd(48478872564493742276963,37659670402359614687722+12)
     q = extGcd(48478872564493742276963,37659670402359614687722-12)
-    return p[2],q[2]
+    return p[0],q[0]
 
 print calculePQFromRabin()

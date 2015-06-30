@@ -45,9 +45,9 @@ def main():
         PRIV_KEY = PATH + "rsa.priv"
 
         if args.genkeys:
-            print "Generating " + str(args.genkeys) + " bit keys..."
+            print "Generating %d bit keys..." % args.genkeys
             gen_keys(args.genkeys)
-            print "Done, keys placed in " + PATH
+            print "Done, keys placed in %s" % PATH
             print "Your public key:"
             Utils.ascii_print(PUB_KEY)
             print "Your private key:"
@@ -56,7 +56,7 @@ def main():
             print "Signing file..."
             SIGNED_FILE = PATH + args.sign[0] + ".signed"
             sign(args.sign[0], args.sign[1])
-            print "Sign placed in " + SIGNED_FILE + " here is the sign"
+            print "Sign placed in %s here is the sign" % SIGNED_FILE
             Utils.ascii_print(SIGNED_FILE)
         elif args.verify:
             print "Verifying signature..."
@@ -70,8 +70,8 @@ def main():
                 print warning
                 print "#"*len(warning)
                 print
-            print "Original signature: \n" + str(original)
-            print "Current signature \n" + str(check)
+            print "Original signature: %d\n" % original
+            print "Current signature %d\n" % check
 
 def gen_keys(size=1024):
     """Generate a RSA key pair of the given size bytes.

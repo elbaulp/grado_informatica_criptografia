@@ -25,7 +25,7 @@ def cypher(m, li):
     for i in xrange(len(pub)):
         c += int(m[i]) * pub[i]
 
-    print "Pub: " + str(pub)
+    print "Pub: %s" % pub
     return c
 
 def decypher(c, w):
@@ -47,8 +47,8 @@ s = [2, 7, 11, 21, 42, 89, 180, 354]
 c = cypher(bin(ord('b'))[2:].zfill(8), s)
 m = decypher(c, s)
 
-print 'E(m): ' + str(c)
-print 'D(c): ' + str(m)
+print 'E(m): %d' % c
+print 'D(c): %s' % m
 
 if __name__ == '__main__':
     pass

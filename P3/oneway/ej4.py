@@ -27,4 +27,4 @@ def MerkleDamgard(sem,m):
         x = h(int(m[i]), x)
     return x
 
-print "h(m) = " + str(MerkleDamgard(15, bin(int(binascii.hexlify(text), 16))[2:]))
+print "h(m) = %d" % MerkleDamgard(15, bin(int(binascii.hexlify(text), 16))[2:])

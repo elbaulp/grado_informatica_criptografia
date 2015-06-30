@@ -77,14 +77,10 @@ def gen_keys(size=1024):
     """Generate a RSA key pair of the given size bytes.
     :param size: Size in bits of the keys (Default is 1024 bits)
     """
+    size >>= 1
     # Get two random numbers of a fixed bits size
+    print "Real size %d" % size
     n1,n2 = random.getrandbits(size), random.getrandbits(size)
-
-    # Make the random numbers to be odd
-    if not 0x1 & n1:
-        n1 = n1 + 1
-    if not 0x1 & n2:
-        n2 = n2 + 1
 
     p = Utils.get_prime(n1)
     q = Utils.get_prime(n2)

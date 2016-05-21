@@ -21,7 +21,7 @@ def main():
 
 def powerModInt(a,k,n):
     """
-        @input a in Z_n and integers 0 <= k <= n in binary representation
+        @input a in Z_n and integers 0 <= k <= n
         
         @outup a times k mod n
     """

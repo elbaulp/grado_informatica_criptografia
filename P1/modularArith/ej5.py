@@ -35,6 +35,7 @@ def babyGiantStep(alpha, beta, p):
 
 if __name__ == '__main__':
     start_time = time.time()
-    print babyGiantStep(315654,51216931716,72345123259)
+    print babyGiantStep(13,2,19)
+    # print babyGiantStep(315654,51216931716,72345123259)
     elapsed_time = time.time() - start_time
     print("%0.10f" % elapsed_time) 

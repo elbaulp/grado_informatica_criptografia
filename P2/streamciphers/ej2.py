@@ -30,5 +30,6 @@ if __name__ == '__main__':
     # primitive polynomial
     
     s = ''.join(map(str, LFSR([1,0,0,1,0], [1,1,1,1,1], 2**5 - 1)))
-    print s
-    print checkGolomg(s)
+    p = ''.join(map(str, LFSR([1,0,0,1], [1,0,0,1], 2**4 - 1)))
+    print p
+    print checkGolomg(p)

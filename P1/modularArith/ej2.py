@@ -16,7 +16,7 @@ def main():
     a,n = 2, 5
     
     start_time = time.time()
-    moduloInverse(a, n)
+    print moduloInverse(a, n)
     elapsed_time = time.time() - start_time
     print("%0.10f" % elapsed_time)    
     
